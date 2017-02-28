@@ -4,7 +4,6 @@ module.exports = {
       if(err) {
         throw err;
       }
-      console.log(result.rows[0]);
       done(result.rows, 'name');
     });
   },

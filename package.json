@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/zuzanatoldyova/pq_exercise#readme",
   "dependencies": {
+    "knex": "^0.12.7",
+    "moment": "^2.17.1",
     "pg": "^6.1.2"
   }
 }

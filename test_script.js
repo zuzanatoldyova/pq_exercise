@@ -8,6 +8,7 @@ const client = new pg.Client({
   port: settings.port,
   ssl: settings.ssl
 });
+const moment = require('moment');
 
 
 const findhelpers = require('./find_helpers');
@@ -34,7 +35,7 @@ function findPerson(input) {
           for (let person of foundpeople) {
             if (person.result.length) {
               for (let one of person.result) {
-                console.log(`Found by ${person.handle}, ${one.id}, ${one.first_name}, ${one.last_name}, ${one.birthdate}`);
+                console.log(`Found by ${person.handle}, ${one.id}, ${one.first_name}, ${one.last_name}, ${moment(one.birthdate).format("MMM Do YYYY")}`);
               }
             }
           }
