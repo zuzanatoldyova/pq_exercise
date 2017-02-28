@@ -1,4 +1,3 @@
-const db = require('./db');
 const pg = require("pg");
 const settings = require("./settings");
 const client = new pg.Client({
@@ -10,12 +9,13 @@ const client = new pg.Client({
   ssl: settings.ssl
 });
 
+
 const findhelpers = require('./find_helpers');
 
 let input = process.argv.slice(2)[0];
 
 function findPerson(input) {
-  db.connect((error, client) => {
+  client.connect((error, client) => {
     let foundpeople = [];
     if (error) {
       throw error;
@@ -39,7 +39,11 @@ function findPerson(input) {
             }
           }
         }
-        db.close(client);
+        client.end((error) => {
+          if (error) {
+            throw error;
+          }
+        });
       });
     });
   });
