@@ -17,10 +17,10 @@ let input = process.argv.slice(2)[0];
 
 function findPerson(input) {
   client.connect((error, client) => {
-    let foundpeople = [];
     if (error) {
       throw error;
     }
+    let foundpeople = [];
     findhelpers.findByName(client, input, (result, handle) => {
       if (result) {
         foundpeople.push({handle, result});
